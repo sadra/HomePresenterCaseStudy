@@ -28,7 +28,6 @@ class HomePresenterTest {
 
     @org.junit.jupiter.api.Test
     void loading() {
-        homePresenter.update();
         fail("This test has yet to be implemented");
     }
 
