@@ -75,11 +75,11 @@ public class HomePresenter implements LoadingInterface, UpdateInterface {
 
 
     private boolean shouldInboxUpdated(){
-        return currentInbox == null && mInboxes != null && !mInboxes.isEmpty();
+        return currentInbox == null && !mInboxes.isEmpty();
     }
 
     private boolean shouldTeamUpdated(){
-        return currentTeam == null && mTeams != null && !mTeams.isEmpty();
+        return currentTeam == null && !mTeams.isEmpty();
     }
 
 
