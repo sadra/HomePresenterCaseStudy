@@ -13,7 +13,8 @@ public class Main {
         Long defaultInboxId = 0L;
 
         HomePresenter homePresenter = new HomePresenter(repository, navigationController, defaultTeamId, defaultInboxId);
-
+        homePresenter.loading();
+        homePresenter.update();
     }
 
 }

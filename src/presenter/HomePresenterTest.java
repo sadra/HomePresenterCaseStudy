@@ -1,13 +1,18 @@
 package presenter;
 
 import controllers.MainNavigationController;
+import models.Inbox;
+import models.Team;
 import repositories.Repository;
+
+import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class HomePresenterTest {
 
     HomePresenter homePresenter;
+    private Repository repository;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
@@ -23,7 +28,7 @@ class HomePresenterTest {
 
     @org.junit.jupiter.api.Test
     void loading() {
-
+        homePresenter.update();
         fail("This test has yet to be implemented");
     }
 

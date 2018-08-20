@@ -36,22 +36,23 @@ public class HomePresenter implements LoadingInterface, UpdateInterface {
         this.mNavigationController = navigationController;
         this.defaultTeamId = defaultTeamId;
         this.defaultInboxId = defaultInboxId;
-        loading();
+
     }
+
 
     @Override
     public void loading() {
         mUser = mRepository.getUser();
         mTeams = mRepository.getTeams();
-        if(shouldTeamUpdated()){
-            update();
-        }
     }
 
     @Override
     public void update() {
-        updateCurrentTeam(defaultTeam);
+        if(shouldTeamUpdated()){
+            updateCurrentTeam(defaultTeam);
+        }
     }
+
 
     private void updateCurrentTeam(Team team) {
         currentTeam = team;
@@ -66,6 +67,7 @@ public class HomePresenter implements LoadingInterface, UpdateInterface {
             updateCurrentInbox(defaultInbox);
         }
     }
+
 
     private void updateCurrentInbox(Inbox inbox) {
         currentInbox = inbox;
