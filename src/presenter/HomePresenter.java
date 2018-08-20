@@ -1,7 +1,9 @@
 package presenter;
 
 import controllers.MainNavigationController;
-import interfaces.Presenter;
+import interfaces.LoadingInterface;
+import interfaces.UpdateInterface;
+import models.Current;
 import models.Inbox;
 import models.Team;
 import models.User;
@@ -10,7 +12,7 @@ import views.View;
 
 import java.util.Collection;
 
-public class HomePresenter implements Presenter {
+public class HomePresenter implements LoadingInterface, UpdateInterface {
 
     private User mUser;
     private Team currentTeam;
@@ -19,11 +21,10 @@ public class HomePresenter implements Presenter {
     private Long defaultInboxId;
     private Collection<Team> mTeams;
     private Collection<Inbox> mInboxes;
-    private boolean isShowingTeams;
 
-    private View mView;
-    private Repository mRepository;
-    private MainNavigationController mNavigationController;
+    private View mView = new View();
+    private Repository mRepository = new Repository();
+    private MainNavigationController mNavigationController = new MainNavigationController();
     private Team defaultTeam = new Team();
     private Inbox defaultInbox = new Inbox();
 
@@ -35,42 +36,51 @@ public class HomePresenter implements Presenter {
         this.mNavigationController = navigationController;
         this.defaultTeamId = defaultTeamId;
         this.defaultInboxId = defaultInboxId;
+        loading();
     }
 
     @Override
-    public void loadUser() {
+    public void loading() {
         mUser = mRepository.getUser();
-    }
-
-    @Override
-    public void loadTeams() {
         mTeams = mRepository.getTeams();
-        if(currentTeam == null && mTeams != null && !mTeams.isEmpty()){
-            updateCurrentTeam(defaultTeam);
+        if(shouldTeamUpdated()){
+            update();
         }
     }
 
     @Override
-    public void loadInboxes(final Team team) {
-        mInboxes = mRepository.getInboxes();
-        if(currentInbox == null && mInboxes != null && !mInboxes.isEmpty()){
-            updateCurrentInbox(defaultInbox);
-        }
+    public void update() {
+        updateCurrentTeam(defaultTeam);
     }
 
-    @Override
-    public void updateCurrentTeam(Team team) {
+    private void updateCurrentTeam(Team team) {
         currentTeam = team;
-        currentInbox = null;
         loadInboxes(currentTeam);
         mView.setSelectedTeam(currentTeam);
     }
 
-    @Override
-    public void updateCurrentInbox(Inbox inbox) {
+
+    private void loadInboxes(final Team team) {
+        mInboxes = mRepository.getInboxes();
+        if(shouldInboxUpdated()){
+            updateCurrentInbox(defaultInbox);
+        }
+    }
+
+    private void updateCurrentInbox(Inbox inbox) {
         currentInbox = inbox;
         mNavigationController.navigateToInbox(currentTeam, inbox);
         mView.setSelectedInbox(currentInbox);
     }
+
+
+    private boolean shouldInboxUpdated(){
+        return currentInbox == null && mInboxes != null && !mInboxes.isEmpty();
+    }
+
+    private boolean shouldTeamUpdated(){
+        return currentTeam == null && mTeams != null && !mTeams.isEmpty();
+    }
+
 
 }

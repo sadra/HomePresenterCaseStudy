@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="org.junit:junit5-engine:5.0.0-SNAPSHOT" type="repository">
+    <properties maven-id="org.junit:junit5-engine:5.0.0-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/junit/junit5-engine/5.0.0-SNAPSHOT/junit5-engine-5.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/junit/junit-engine-api/5.0.0-SNAPSHOT/junit-engine-api-5.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/junit/junit-commons/5.0.0-SNAPSHOT/junit-commons-5.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/opentest4j/opentest4j/1.0.0-M1/opentest4j-1.0.0-M1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/junit/junit5-api/5.0.0-SNAPSHOT/junit5-api-5.0.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -18,11 +18,15 @@ public class Repository{
     }
 
     public Collection<Team> getTeams() {
-        return new ArrayList<Team>();
+        Collection<Team> teams = new ArrayList<Team>();
+        teams.add(new Team());
+        return teams;
     }
 
     public Collection<Inbox> getInboxes(){
-        return new ArrayList<Inbox>();
+        Collection<Inbox> inboxes = new ArrayList<Inbox>();
+        inboxes.add(new Inbox());
+        return inboxes;
     }
 
 }
